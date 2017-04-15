@@ -4,8 +4,8 @@
 Java学習用のアプリケーションです
 
 ## Requirements
-JDK 8
-Maven 3.x
+- JDK 8
+- Maven 3.x
 
 ## How to run
 ```
