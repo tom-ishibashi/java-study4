@@ -1,7 +1,7 @@
 package com.javastudy4.main;
 
 /**
- * Created by bassyMac on 2017/04/15.
+ * @author tom-ishibashi
  */
 public class Application {
     public static void main(String[] args) {
