@@ -7,6 +7,11 @@ Java学習用のアプリケーションです
 - JDK 8
 - Maven 3.x
 
+## How to Build
+```
+mvn clean install -Dmaven.test.skip=true
+```
+
 ## How to run
 ```
 mvn exec:java
