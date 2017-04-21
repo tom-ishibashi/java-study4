@@ -1,11 +1,13 @@
 # java-study4
 
 ## Description
-Java学習用のアプリケーションです
+Java学習用のアプリケーションです。  
+アプリケーション仕様はSPECIFICATION.mdを参照。
 
 ## Requirements
 - JDK 8
 - Maven 3.x
+- MySQL 5.x
 
 ## How to Build
 ```
