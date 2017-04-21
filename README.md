@@ -1,7 +1,7 @@
 # java-study4
 
 ## Description
-Java学習用のアプリケーションです。  
+Java学習用のアプリケーションです。  
 アプリケーション仕様はSPECIFICATION.mdを参照。
 
 ## Requirements
