@@ -1,4 +1,4 @@
-package com.javastudy4.operation;
+package com.javastudy4.model;
 
 public class Book {
     private int id;
