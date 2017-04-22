@@ -12,5 +12,26 @@ public class LibraryManager {
         
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
+        Operation operation = Operation.getOperation(input);
+        
+        if (operation == null) {
+            System.out.println("アプリケーションを終了します。");
+            return;
+        }
+        
+        switch(operation) {
+            case SELECT:
+                // TODO select処理を実装する
+                break;
+            case INSERT:
+                // TODO insert処理を実装する
+                break;
+            case UPDATE:
+                // TODO update処理を実装する
+                break;
+            case DELETE:
+                // TODO delete処理を実装する
+                break;
+        }
     }
 }
