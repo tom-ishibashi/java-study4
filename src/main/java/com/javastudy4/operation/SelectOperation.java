@@ -28,7 +28,15 @@ public class SelectOperation {
         System.out.print("本 出版社:");
         bookPublisher = sc.next();
         
+        // TODO ダミーです。DAOの呼び出しを追加する。
+        Library dummyLibrary = createDummyData();
+        
+        System.out.println("図書館/ジャンル/本タイトル/本著者/出版社");
+        Book book = dummyLibrary.getBooks().get(0);
+        System.out.println(String.join("/", dummyLibrary.getName(), book.getGenre(), book.getTitle(), book.getAuthor(), book.getPublisher()));;
+        
     }
+    
     private Library createDummyData(){
         Book book = new Book();
         book.setId(100);
