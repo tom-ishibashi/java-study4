@@ -1,6 +1,7 @@
 package com.javastudy4.main;
 
 import java.util.Scanner;
+import com.javastudy4.operation.SelectOperation;
 
 /**
  * @author tom-ishibashi
@@ -22,6 +23,8 @@ public class LibraryManager {
         switch(operation) {
             case SELECT:
                 // TODO select処理を実装する
+                SelectOperation selectOperation = new SelectOperation();
+                selectOperation.search(); 
                 break;
             case INSERT:
                 // TODO insert処理を実装する
