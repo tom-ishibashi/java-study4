@@ -28,7 +28,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.javastudy4.main.Application</mainClass>
+                    <mainClass>com.javastudy4.main.LibraryManager</mainClass>
                 </configuration>
             </plugin>
         </plugins>
