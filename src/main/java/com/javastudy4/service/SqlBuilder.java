@@ -6,7 +6,7 @@ public class SqlBuilder {
         StringBuilder sql = new StringBuilder();
         sql.append("select * from Library");
         sql.append(" where name = " + libraryName);
-        return sql;
+        return sql.toString();
     }
     
     
