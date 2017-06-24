@@ -5,6 +5,8 @@ import com.javastudy4.model.Book;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.javastudy4.service.LibraryService;
+import java.sql.*;
 
 public class SelectOperation {
     public void search(){
@@ -28,25 +30,23 @@ public class SelectOperation {
         System.out.print("本 出版社:");
         bookPublisher = sc.next();
         
-        // TODO ダミーです。DAOの呼び出しを追加する。
-        Library dummyLibrary = createDummyData();
+        LibraryService libraryService = new LibraryService();
+        List<Library> libraries;
         
+        try{
+            libraries = libraryService.selectByConndition(libraryName);
+        }catch(SQLException e){
+            e.printStackTrace();
+            return;
+        }
         System.out.println("図書館/ジャンル/本タイトル/本著者/出版社");
-        Book book = dummyLibrary.getBooks().get(0);
-        System.out.println(String.join("/", dummyLibrary.getName(), book.getGenre(), book.getTitle(), book.getAuthor(), book.getPublisher()));;
         
-    }
-    
-    private Library createDummyData(){
-        Book book = new Book();
-        book.setId(100);
-        book.setTitle("サルでもデキるjava");
-        List<Book> list = new ArrayList<>();
-        list.add(book);
-        Library library = new Library();
-        library.setBooks(list);
-        library.setId(1000);
-        library.setName("赤羽図書館");
-        return library;
+        for(Library library:libraries){
+            //Book book = dummyLibrary.getBooks().get(0);
+            System.out.println(String.join("/", library.getName()));
+
+        }
+
+        
     }
 }

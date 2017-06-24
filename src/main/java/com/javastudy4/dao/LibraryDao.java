@@ -34,14 +34,6 @@ public class LibraryDao {
             System.out.println("MySQLに接続できました。");
         } catch (SQLException e) {
             System.out.println("MySQLに接続できませんでした。");
-        } finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    System.out.println("MySQLのクローズに失敗しました。");
-                }
-            }
         }
     }
     
