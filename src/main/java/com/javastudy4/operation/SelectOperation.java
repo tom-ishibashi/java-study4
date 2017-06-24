@@ -41,12 +41,12 @@ public class SelectOperation {
         }
         System.out.println("図書館/ジャンル/本タイトル/本著者/出版社");
         
-        for(Library library:libraries){
-            //Book book = dummyLibrary.getBooks().get(0);
-            System.out.println(String.join("/", library.getName()));
+        // for(Library library:libraries){
+        //     //Book book = dummyLibrary.getBooks().get(0);
+        //     System.out.println(String.join("/", library.getName()));
+        // }
 
-        }
-
+        libraries.forEach(library -> System.out.println(String.join("/", library.getName())));
         
     }
 }

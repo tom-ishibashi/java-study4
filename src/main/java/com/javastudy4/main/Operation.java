@@ -1,5 +1,7 @@
 package com.javastudy4.main;
 
+import java.util.Arrays;
+
 public enum Operation {
     SELECT(1),
     INSERT(2),
@@ -16,14 +18,21 @@ public enum Operation {
         return no;
     }
     
+    // public static Operation getOperation(int no) {
+    //     Operation result = null;
+    //     Operation[] op = Operation.values();
+    //     for(Operation operation: op) {
+    //         if (operation.getNo() == no) {
+    //             result = operation;
+    //         }
+    //     }
+    //     return result;
+    // }
+    
     public static Operation getOperation(int no) {
-        Operation result = null;
-        Operation[] op = Operation.values();
-        for(Operation operation: op) {
-            if (operation.getNo() == no) {
-                result = operation;
-            }
-        }
-        return result;
+        return Arrays.stream(Operation.values())
+        .filter(operation -> operation.getNo() == no)
+        .findFirst()
+        .orElse(null);
     }
 }
