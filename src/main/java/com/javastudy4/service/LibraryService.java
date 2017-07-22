@@ -8,9 +8,9 @@ import java.sql.*;
 
 public class LibraryService{
     
-    public List<Library> selectByConndition(String libraryName) throws SQLException{
+    public List<Library> selectByConndition(String libraryName, String bookGenre, String bookTitle, String bookAuthor, String bookPublisher) throws SQLException{
         SqlBuilder sqlBuilder = new SqlBuilder();
-        String sql = sqlBuilder.buildSelectByCondittion(libraryName);
+        String sql = sqlBuilder.buildSelectByCondittion(libraryName, bookGenre, bookTitle, bookAuthor, bookPublisher);
         LibraryDao libraryDao = new LibraryDao();
         return libraryDao.select(sql);
     }

@@ -34,7 +34,7 @@ public class SelectOperation {
         List<Library> libraries;
         
         try{
-            libraries = libraryService.selectByConndition(libraryName);
+            libraries = libraryService.selectByConndition(libraryName, bookGenre, bookTitle, bookAuthor, bookPublisher);
         }catch(SQLException e){
             e.printStackTrace();
             return;
