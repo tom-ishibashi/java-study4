@@ -4,6 +4,7 @@ import com.javastudy4.model.Library;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;
+import com.javastudy4.model.Book;
 
 public class LibraryDao {
     
@@ -19,8 +20,16 @@ public class LibraryDao {
     private List<Library> convert(ResultSet rs) throws SQLException{
         List<Library> result = new ArrayList<>();
         while(rs.next()){
+            List<Book> books = new ArrayList<>();
             Library library = new Library();
+            Book book = new Book();
             library.setName(rs.getString("name"));
+            book.setGenre(rs.getString("genre"));
+            book.setTitle(rs.getString("title"));
+            book.setAuthor(rs.getString("author"));
+            book.setPublisher(rs.getString("publisher"));
+            books.add(book);
+            library.setBooks(books);
             result.add(library);
         }
         return result;
