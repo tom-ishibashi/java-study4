@@ -14,12 +14,26 @@ public class SqlBuilder {
         sql.append("  library library");
         sql.append("  join library_book_link link on library.id = link.library_id ");
         sql.append("  join book book on book.id = link.book_id ");
+        if (libraryName == null && bookGenre == null && bookTitle == null && bookAuthor == null && bookPublisher == null){
+            return sql.toString();
+        }
         sql.append("where ");
-        sql.append(" library.name = '" + libraryName + "'");
-        sql.append(" and book.genre = '" + bookGenre + "'");
-        sql.append(" and book.title = '" + bookTitle + "'");
-        sql.append(" and book.author = '" + bookAuthor + "'");
-        sql.append(" and book.publisher = '" + bookPublisher + "'");
+        sql.append("1 = 1");
+        if (libraryName != null){
+            sql.append(" and library.name = '" + libraryName + "'");
+        }
+        if (bookGenre != null){
+            sql.append(" and book.genre = '" + bookGenre + "'");
+        }
+        if (bookTitle != null){
+            sql.append(" and book.title = '" + bookTitle + "'");
+        }
+        if (bookAuthor != null){
+            sql.append(" and book.author = '" + bookAuthor + "'");
+        }
+        if (bookPublisher != null){
+            sql.append(" and book.publisher = '" + bookPublisher + "'");
+        }
         sql.append(";");
         return sql.toString();
     }
