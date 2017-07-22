@@ -20,7 +20,6 @@ public class LibraryDao {
         List<Library> result = new ArrayList<>();
         while(rs.next()){
             Library library = new Library();
-            library.setId(rs.getInt("id"));
             library.setName(rs.getString("name"));
             result.add(library);
         }
