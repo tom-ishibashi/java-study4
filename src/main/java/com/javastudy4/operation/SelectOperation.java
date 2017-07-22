@@ -8,27 +8,56 @@ import java.util.Scanner;
 import com.javastudy4.service.LibraryService;
 import java.sql.*;
 
+
 public class SelectOperation {
     public void search(){
         
         Scanner sc = new Scanner(System.in);
-        String libraryName;
-        String bookGenre;
-        String bookTitle;
-        String bookAuthor;
-        String bookPublisher;
-        
-        System.out.println("検索条件を入力してください。");
-        System.out.print("図書館:");
-        libraryName = sc.next();
-        System.out.print("本 ジャンル:");
-        bookGenre = sc.next();
-        System.out.print("本 タイトル:");
-        bookTitle = sc.next();
-        System.out.print("本 著者名:");
-        bookAuthor = sc.next();
-        System.out.print("本 出版社:");
-        bookPublisher = sc.next();
+        String libraryName = null;
+        String bookGenre = null;
+        String bookTitle = null;
+        String bookAuthor = null;
+        String bookPublisher = null;
+
+        while(true){
+            System.out.println("検索条件を選択してください。");
+            System.out.println("0:検索、1:図書館名、2:ジャンル、3:タイトル、4:著者名、5:出版社");
+            int input = sc.nextInt();
+            SearchConditions searchConditions = SearchConditions.getSearchConditions(input);
+            
+            if (input == 0) {
+                break;
+            }
+            
+            if(searchConditions == null){
+                continue;
+            }
+            
+            switch(searchConditions) {
+                case LIBRARY_NAME:
+                    System.out.print("図書館:");
+                    libraryName = sc.next();
+                    break;
+                case BOOK_GENRE:
+                    System.out.print("本 ジャンル:");
+                    bookGenre = sc.next();
+                    break;
+                case BOOK_TITLE:
+                    System.out.print("本 タイトル:");
+                    bookTitle = sc.next();
+                    break;
+                case BOOK_AUTHOR:
+                    System.out.print("本 著者名:");
+                    bookAuthor = sc.next();
+                    break;
+                case BOOK_PUBLISHER:
+                    System.out.print("本 出版社:");
+                    bookPublisher = sc.next();
+                    break;
+                default:
+                    break;
+            }
+        }
         
         LibraryService libraryService = new LibraryService();
         List<Library> libraries;
