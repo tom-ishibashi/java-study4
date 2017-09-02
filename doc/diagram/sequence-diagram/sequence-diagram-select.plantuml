@@ -1,0 +1,22 @@
+@startuml
+actor User
+participant LibraryManager
+participant SelectOperation
+participant LibraryService
+participant LibraryDao
+database Database
+
+autonumber
+User -> LibraryManager : selectを選択
+LibraryManager -> SelectOperation : 検索処理開始
+User <- SelectOperation : 検索条件の表示
+User -> SelectOperation : 検索条件入力
+SelectOperation -> LibraryService : 検索条件受け渡し
+LibraryService -> LibraryDao : SQL受け渡し
+LibraryDao -> Database : SQL発行
+LibraryDao <- Database : 検索結果を返す
+LibraryService <- LibraryDao : 検索結果を返す
+SelectOperation <- LibraryService : 検索結果を返す
+User <- SelectOperation : 検索結果の表示
+
+@enduml

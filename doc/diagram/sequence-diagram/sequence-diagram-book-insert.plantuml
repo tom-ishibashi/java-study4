@@ -1,0 +1,28 @@
+@startuml
+
+'本の登録'
+
+actor User
+participant LibraryManager
+participant InsertOperation
+participant BookService
+participant BookDao
+database Database
+
+autonumber
+User -> LibraryManager : insertを選択
+LibraryManager -> InsertOperation : 登録処理開始
+loop 図書館,本,紐付け以外を選択したら終了
+    User <- InsertOperation : 登録対象の表示
+    User -> InsertOperation : 本を選択
+    User -> InsertOperation : 本の情報を入力
+    InsertOperation -> BookService : 本情報受け渡し
+    BookService -> BookDao : SQL受け渡し
+    BookDao -> Database : SQL発行
+    BookDao <- Database : 正常終了
+    BookService <- BookDao : 正常終了
+    InsertOperation <- BookService : 正常終了
+    User <- InsertOperation : 登録完了メッセージの表示
+end
+
+@enduml
