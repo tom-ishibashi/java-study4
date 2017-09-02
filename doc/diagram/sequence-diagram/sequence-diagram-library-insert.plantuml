@@ -1,0 +1,27 @@
+@startuml
+'図書館の登録'
+
+actor User
+participant LibraryManager
+participant InsertOperation
+participant LibraryService
+participant LibraryDao
+database Database
+
+autonumber
+User -> LibraryManager : insertを選択
+LibraryManager -> InsertOperation : 登録処理開始
+loop 図書館,本,紐付け以外を選択したら終了
+    User <- InsertOperation : 登録対象の表示
+    User -> InsertOperation : 図書館を選択
+    User -> InsertOperation : 図書館の情報を入力
+    InsertOperation -> LibraryService : 図書館情報受け渡し
+    LibraryService -> LibraryDao : SQL受け渡し
+    LibraryDao -> Database : SQL発行
+    LibraryDao <- Database : 正常終了
+    LibraryService <- LibraryDao : 正常終了
+    InsertOperation <- LibraryService : 正常終了
+    User <- InsertOperation : 登録完了メッセージの表示
+end
+
+@enduml
