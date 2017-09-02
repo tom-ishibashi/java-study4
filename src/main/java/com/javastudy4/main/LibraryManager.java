@@ -2,6 +2,7 @@ package com.javastudy4.main;
 
 import java.util.Scanner;
 import com.javastudy4.operation.SelectOperation;
+import com.javastudy4.main.factory.OperationFactory;
 
 /**
  * @author tom-ishibashi
@@ -19,22 +20,6 @@ public class LibraryManager {
             System.out.println("アプリケーションを終了します。");
             return;
         }
-        
-        switch(operation) {
-            case SELECT:
-                // TODO select処理を実装する
-                SelectOperation selectOperation = new SelectOperation();
-                selectOperation.search(); 
-                break;
-            case INSERT:
-                // TODO insert処理を実装する
-                break;
-            case UPDATE:
-                // TODO update処理を実装する
-                break;
-            case DELETE:
-                // TODO delete処理を実装する
-                break;
-        }
+        OperationFactory.getInstance(operation).execute();
     }
 }
