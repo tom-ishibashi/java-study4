@@ -9,8 +9,8 @@ import com.javastudy4.service.LibraryService;
 import java.sql.*;
 
 
-public class SelectOperation {
-    public void search(){
+public class SelectOperation implements LibraryOperation {
+    public void execute(){
         
         Scanner sc = new Scanner(System.in);
         String libraryName = null;
