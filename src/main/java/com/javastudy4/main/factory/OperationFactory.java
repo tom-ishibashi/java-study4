@@ -2,6 +2,7 @@ package com.javastudy4.main.factory;
 import com.javastudy4.operation.LibraryOperation;
 import com.javastudy4.main.Operation;
 import com.javastudy4.operation.SelectOperation;
+import com.javastudy4.operation.InsertOperation;
 
 public class OperationFactory {
     public static LibraryOperation getInstance(Operation operation){
@@ -11,7 +12,7 @@ public class OperationFactory {
                 libraryOperation = new SelectOperation();
                 break;
             case INSERT:
-                // TODO insert処理を実装する
+                libraryOperation = new InsertOperation();
                 break;
             case UPDATE:
                 // TODO update処理を実装する

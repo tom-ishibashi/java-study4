@@ -38,6 +38,17 @@ public class SqlBuilder {
         return sql.toString();
     }
     
-    
+    public String buildSelectLibraryMaxId() {
+        StringBuilder sql = new StringBuilder();
+        sql.append("select IFNULL(MAX(id),0) as id from library;");
+        return sql.toString();
+    }
+    public String buildInsertLibrary(int id, String name) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT into library (id, name) values (" + id + ", '" + name + "');");
+        return sql.toString();
+    }
+
+
     
 }

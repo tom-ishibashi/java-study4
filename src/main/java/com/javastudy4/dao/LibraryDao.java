@@ -10,14 +10,27 @@ public class LibraryDao {
     
     private Connection con;
     
-    public List<Library> select(String sql) throws SQLException{
+    public List<Library> getResultList(String sql) throws SQLException{
         getConnection();
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
-        return convert(rs);
+        return convertToList(rs);
     }
     
-    private List<Library> convert(ResultSet rs) throws SQLException{
+    public Library getSingleResult(String sql) throws SQLException{
+        getConnection();
+        Statement stm = con.createStatement();
+        ResultSet rs = stm.executeQuery(sql);
+        return convertToSingle(rs);
+    }
+    
+    public void insert(String sql) throws SQLException{
+        getConnection();
+        Statement stm = con.createStatement();
+        stm.executeUpdate(sql);
+    }
+    
+    private List<Library> convertToList(ResultSet rs) throws SQLException{
         List<Library> result = new ArrayList<>();
         while(rs.next()){
             List<Book> books = new ArrayList<>();
@@ -31,6 +44,14 @@ public class LibraryDao {
             books.add(book);
             library.setBooks(books);
             result.add(library);
+        }
+        return result;
+    }
+    
+    private Library convertToSingle(ResultSet rs) throws SQLException{
+        Library result = new Library();
+        while(rs.next()){
+            result.setId(rs.getInt("id"));
         }
         return result;
     }
