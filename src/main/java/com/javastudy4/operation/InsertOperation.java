@@ -5,7 +5,7 @@ import com.javastudy4.model.Book;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
-import com.javastudy4.service.LibraryService;
+import com.javastudy4.service.*;
 import java.sql.*;
 
 
@@ -18,6 +18,7 @@ public class InsertOperation implements LibraryOperation {
         System.out.println("1:図書館 2:本 3:ひも付き");
 
         LibraryService libraryService = new LibraryService();
+        BookService bookService = new BookService();
 
         try {
     
@@ -36,8 +37,22 @@ public class InsertOperation implements LibraryOperation {
                         libraryService.insertLibrary(sc.next());
                         break;
                     case BOOK:
-                        // System.out.print("本 ジャンル:");
-                        // bookGenre = sc.next();
+                        System.out.print("本 タイトル:");
+                        String bookTitle = sc.next();
+                        
+                        System.out.print("本 ジャンル:");
+                        String bookGenre = sc.next();
+                        
+                        System.out.print("本 価格:");
+                        int bookPrice = sc.nextInt();
+                        
+                        System.out.print("本 著者:");
+                        String bookAuthor = sc.next();
+                        
+                        System.out.print("本 出版社:");
+                        String bookPublisher = sc.next();
+                        
+                        bookService.insertBook(bookTitle,bookGenre,bookPrice,bookAuthor,bookPublisher);
                         break;
                     case LINK:
                         // System.out.print("本 タイトル:");

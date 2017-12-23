@@ -1,30 +1,30 @@
 package com.javastudy4.dao;
 
-import com.javastudy4.model.Library;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;
 import com.javastudy4.model.Book;
 
 
-public class LibraryDao implements JdbcDao<Library>{
+public class BookDao implements JdbcDao<Book>{
     
     private Connection con;
     
     @Override
-    public List<Library> getResultList(String sql) throws SQLException{
-        getConnection();
+    public List<Book> getResultList(String sql) throws SQLException{
+    /*    getConnection();
         Statement stm = con.createStatement();
-        ResultSet rs = stm.executeQuery(sql);
-        return convertToList(rs);
+        ResultSet rs = stm.executeQuery(sql);*/
+        return null;
     }
     
     @Override
-    public Library getSingleResult(String sql) throws SQLException{
+    public Book getSingleResult(String sql) throws SQLException{
         getConnection();
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         return convertToSingle(rs);
+        // return null;
     }
     
     @Override
@@ -34,7 +34,7 @@ public class LibraryDao implements JdbcDao<Library>{
         stm.executeUpdate(sql);
     }
     
-    private List<Library> convertToList(ResultSet rs) throws SQLException{
+/*    private List<Library> convertToList(ResultSet rs) throws SQLException{
         List<Library> result = new ArrayList<>();
         while(rs.next()){
             List<Book> books = new ArrayList<>();
@@ -51,9 +51,9 @@ public class LibraryDao implements JdbcDao<Library>{
         }
         return result;
     }
-    
-    private Library convertToSingle(ResultSet rs) throws SQLException{
-        Library result = new Library();
+*/    
+    private Book convertToSingle(ResultSet rs) throws SQLException{
+        Book result = new Book();
         while(rs.next()){
             result.setId(rs.getInt("id"));
         }
