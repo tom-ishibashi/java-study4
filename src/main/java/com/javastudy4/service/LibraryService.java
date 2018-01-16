@@ -1,10 +1,11 @@
 package com.javastudy4.service;
 
-import java.util.List;
-import java.util.ArrayList;
+import com.javastudy4.dao.JdbcDao;
+import com.javastudy4.dao.LibraryDao;
 import com.javastudy4.model.Library;
-import com.javastudy4.dao.*;
-import java.sql.*;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public class LibraryService{
     
@@ -18,9 +19,12 @@ public class LibraryService{
     public void insertLibrary(String name)  throws SQLException{
         SqlBuilder sqlBuilder = new SqlBuilder();
         String selectMaxIdSql = sqlBuilder.buildSelectLibraryMaxId();
-        JdbcDao jdbcDao = new LibraryDao();
-        // int id = jdbcDao.getSingleResult(selectMaxIdSql).getId();
-        // String insertSql = sqlBuilder.buildInsertLibrary(id + 1, name);
-        // jdbcDao.insert(insertSql);
+
+        System.out.println(selectMaxIdSql);
+
+        JdbcDao<Library> jdbcDao = new LibraryDao();
+        Library library = jdbcDao.getSingleResult(selectMaxIdSql);
+        String insertSql = sqlBuilder.buildInsertLibrary(library.getId() + 1, name);
+        jdbcDao.insert(insertSql);
     }
 }

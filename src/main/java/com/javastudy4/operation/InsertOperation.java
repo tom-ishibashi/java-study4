@@ -1,12 +1,10 @@
 package com.javastudy4.operation;
 
-import com.javastudy4.model.Library;
-import com.javastudy4.model.Book;
-import java.util.List;
-import java.util.ArrayList;
+import com.javastudy4.service.BookService;
+import com.javastudy4.service.LibraryService;
+
+import java.sql.SQLException;
 import java.util.Scanner;
-import com.javastudy4.service.*;
-import java.sql.*;
 
 
 public class InsertOperation implements LibraryOperation {
@@ -14,16 +12,16 @@ public class InsertOperation implements LibraryOperation {
         
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("登録対象を選択してください。");
-        System.out.println("1:図書館 2:本 3:ひも付き");
-
         LibraryService libraryService = new LibraryService();
         BookService bookService = new BookService();
 
         try {
-    
-            while(true){  
-    
+
+            while(true){
+
+                System.out.println("登録対象を選択してください。");
+                System.out.println("1:図書館 2:本 3:ひも付き");
+
                 int input = sc.nextInt();
                 InsertTergets insertTergets = InsertTergets.getInsertTergets(input);
                 

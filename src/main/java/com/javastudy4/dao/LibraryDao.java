@@ -1,10 +1,11 @@
 package com.javastudy4.dao;
 
-import com.javastudy4.model.Library;
-import java.util.List;
-import java.util.ArrayList;
-import java.sql.*;
 import com.javastudy4.model.Book;
+import com.javastudy4.model.Library;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LibraryDao implements JdbcDao<Library>{
@@ -63,7 +64,7 @@ public class LibraryDao implements JdbcDao<Library>{
     private void getConnection() {
         try {
             // MySQLに接続
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javastudy4", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javastudy4", "root", "1QAZ2wsx##");
             System.out.println("MySQLに接続できました。");
         } catch (SQLException e) {
             System.out.println("MySQLに接続できませんでした。");

@@ -1,9 +1,11 @@
 package com.javastudy4.dao;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.sql.*;
 import com.javastudy4.model.Book;
+import com.javastudy4.model.Library;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class BookDao implements JdbcDao<Book>{
@@ -12,9 +14,10 @@ public class BookDao implements JdbcDao<Book>{
     
     @Override
     public List<Book> getResultList(String sql) throws SQLException{
-    /*    getConnection();
+        getConnection();
         Statement stm = con.createStatement();
-        ResultSet rs = stm.executeQuery(sql);*/
+        ResultSet rs = stm.executeQuery(sql);
+//        return convertToList(rs);
         return null;
     }
     
@@ -24,7 +27,6 @@ public class BookDao implements JdbcDao<Book>{
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         return convertToSingle(rs);
-        // return null;
     }
     
     @Override
@@ -34,24 +36,24 @@ public class BookDao implements JdbcDao<Book>{
         stm.executeUpdate(sql);
     }
     
-/*    private List<Library> convertToList(ResultSet rs) throws SQLException{
+    private List<Library> convertToList(ResultSet rs) throws SQLException{
         List<Library> result = new ArrayList<>();
-        while(rs.next()){
-            List<Book> books = new ArrayList<>();
-            Library library = new Library();
-            Book book = new Book();
-            library.setName(rs.getString("name"));
-            book.setGenre(rs.getString("genre"));
-            book.setTitle(rs.getString("title"));
-            book.setAuthor(rs.getString("author"));
-            book.setPublisher(rs.getString("publisher"));
-            books.add(book);
-            library.setBooks(books);
-            result.add(library);
-        }
+//        while(rs.next()){
+//            List<Book> books = new ArrayList<>();
+//            Library library = new Library();
+//            Book book = new Book();
+//            library.setName(rs.getString("name"));
+//            book.setGenre(rs.getString("genre"));
+//            book.setTitle(rs.getString("title"));
+//            book.setAuthor(rs.getString("author"));
+//            book.setPublisher(rs.getString("publisher"));
+//            books.add(book);
+//            library.setBooks(books);
+//            result.add(library);
+//        }
         return result;
     }
-*/    
+
     private Book convertToSingle(ResultSet rs) throws SQLException{
         Book result = new Book();
         while(rs.next()){
@@ -63,7 +65,7 @@ public class BookDao implements JdbcDao<Book>{
     private void getConnection() {
         try {
             // MySQLに接続
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javastudy4", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javastudy4", "root", "1QAZ2wsx##");
             System.out.println("MySQLに接続できました。");
         } catch (SQLException e) {
             System.out.println("MySQLに接続できませんでした。");
