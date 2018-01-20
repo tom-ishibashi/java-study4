@@ -24,7 +24,6 @@ public class BookDao implements JdbcDao<Book>{
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         return convertToSingle(rs);
-        // return null;
     }
     
     @Override
