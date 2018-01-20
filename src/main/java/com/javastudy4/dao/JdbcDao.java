@@ -12,21 +12,20 @@ public interface JdbcDao<T> {
     /**
      * 複数行の結果を取得する
      * @param sql SELECTのSQL
-     * @retun List<T> 複数行
+     * @return List<T> 複数行
      */
     public List<T> getResultList(String sql) throws SQLException;
     
     /**
      * 単一行での結果を取得する
      * @param sql SELECTのSQL
-     * @retun T 単一行
+     * @return T 単一行
      */
     public T getSingleResult(String sql) throws SQLException;
     
     /**
      * INSERT処理
      * @param sql INSERTのSQL
-     * @retun T 単一行
      */
     public void insert(String sql) throws SQLException;
 
