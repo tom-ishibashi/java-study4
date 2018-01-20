@@ -5,10 +5,10 @@ public class SqlBuilder {
     /**
      * 条件を基に図書館と本を検索するSQLを作成
      * @param libraryName 図書館名
-     * @parm bookGenre 本のジャンル
-     * @parm bookTitle 本の題名
-     * @parm bookAuthor 本の著者
-     * @parm bookpublisher 本の出版社
+     * @param bookGenre 本のジャンル
+     * @param bookTitle 本の題名
+     * @param bookAuthor 本の著者
+     * @param bookpublisher 本の出版社
      * @return String SQL
      */
     public String buildSelectByCondittion(String libraryName, String bookGenre, String bookTitle, String bookAuthor, String bookPublisher){
@@ -81,11 +81,11 @@ public class SqlBuilder {
     
     /**
      * 本テーブルにINSERTするSQLを作成
-     * @parm id 本テーブルのid
-     * @parm title 題名
-     * @parm genre ジャンル
-     * @parm author 著者
-     * @parm publisher 出版社
+     * @param id 本テーブルのid
+     * @param title 題名
+     * @param genre ジャンル
+     * @param author 著者
+     * @param publisher 出版社
      * @return String SQL
      */
     public String buildInsertBook(int id,String title,String genre,int price,String author,String publisher) {
