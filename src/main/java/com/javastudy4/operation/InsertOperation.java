@@ -14,16 +14,14 @@ public class InsertOperation implements LibraryOperation {
         
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("登録対象を選択してください。");
-        System.out.println("1:図書館 2:本 3:ひも付き");
-
         LibraryService libraryService = new LibraryService();
         BookService bookService = new BookService();
 
         try {
     
             while(true){  
-    
+                System.out.println("登録対象を選択してください。");
+                System.out.println("1:図書館 2:本 3:ひも付き");
                 int input = sc.nextInt();
                 InsertTergets insertTergets = InsertTergets.getInsertTergets(input);
                 

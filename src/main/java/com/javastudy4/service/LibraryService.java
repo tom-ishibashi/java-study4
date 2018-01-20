@@ -18,9 +18,9 @@ public class LibraryService{
     public void insertLibrary(String name)  throws SQLException{
         SqlBuilder sqlBuilder = new SqlBuilder();
         String selectMaxIdSql = sqlBuilder.buildSelectLibraryMaxId();
-        JdbcDao jdbcDao = new LibraryDao();
-        // int id = jdbcDao.getSingleResult(selectMaxIdSql).getId();
-        // String insertSql = sqlBuilder.buildInsertLibrary(id + 1, name);
-        // jdbcDao.insert(insertSql);
+        JdbcDao<Library> jdbcDao = new LibraryDao();
+        int id = jdbcDao.getSingleResult(selectMaxIdSql).getId();
+        String insertSql = sqlBuilder.buildInsertLibrary(id + 1, name);
+        jdbcDao.insert(insertSql);
     }
 }

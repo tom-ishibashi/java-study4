@@ -34,24 +34,21 @@ public class BookDao implements JdbcDao<Book>{
         stm.executeUpdate(sql);
     }
     
-/*    private List<Library> convertToList(ResultSet rs) throws SQLException{
-        List<Library> result = new ArrayList<>();
+    private List<Book> convertToList(ResultSet rs) throws SQLException{
+        List<Book> result = new ArrayList<>();
         while(rs.next()){
-            List<Book> books = new ArrayList<>();
-            Library library = new Library();
             Book book = new Book();
-            library.setName(rs.getString("name"));
-            book.setGenre(rs.getString("genre"));
+            book.setId(rs.getInt("id"));
             book.setTitle(rs.getString("title"));
+            book.setGenre(rs.getString("genre"));
             book.setAuthor(rs.getString("author"));
+            book.setPrice(rs.getInt("price"));
             book.setPublisher(rs.getString("publisher"));
-            books.add(book);
-            library.setBooks(books);
-            result.add(library);
+            result.add(book);
         }
         return result;
     }
-*/    
+    
     private Book convertToSingle(ResultSet rs) throws SQLException{
         Book result = new Book();
         while(rs.next()){
