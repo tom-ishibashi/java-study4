@@ -17,7 +17,7 @@ public class LibraryService{
      * @param bookGenre 本のジャンル
      * @param bookTitle 本の題名
      * @param bookAuthor 本の著者
-     * @param bookpublisher 本の出版社
+     * @param bookPublisher 本の出版社
      * @return List<Library> 検索結果
      */
     public List<Library> selectByConndition(String libraryName, String bookGenre, String bookTitle, String bookAuthor, String bookPublisher) throws SQLException{
