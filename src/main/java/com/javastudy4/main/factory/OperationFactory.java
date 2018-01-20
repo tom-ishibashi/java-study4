@@ -5,6 +5,9 @@ import com.javastudy4.operation.SelectOperation;
 import com.javastudy4.operation.InsertOperation;
 
 public class OperationFactory {
+    /**
+     * 操作に応じた処理クラスの生成
+     */
     public static LibraryOperation getInstance(Operation operation){
         LibraryOperation libraryOperation = null; 
         switch(operation) {

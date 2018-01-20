@@ -8,7 +8,9 @@ import java.util.Scanner;
 import com.javastudy4.service.LibraryService;
 import java.sql.*;
 
-
+/**
+ * 検索処理
+ */
 public class SelectOperation implements LibraryOperation {
     public void execute(){
         

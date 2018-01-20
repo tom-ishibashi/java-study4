@@ -1,7 +1,9 @@
 package com.javastudy4.main;
 
 import java.util.Arrays;
-
+/**
+ * 操作種別
+ */
 public enum Operation {
     SELECT(1),
     INSERT(2),
@@ -17,17 +19,6 @@ public enum Operation {
     public int getNo() {
         return no;
     }
-    
-    // public static Operation getOperation(int no) {
-    //     Operation result = null;
-    //     Operation[] op = Operation.values();
-    //     for(Operation operation: op) {
-    //         if (operation.getNo() == no) {
-    //             result = operation;
-    //         }
-    //     }
-    //     return result;
-    // }
     
     public static Operation getOperation(int no) {
         return Arrays.stream(Operation.values())
