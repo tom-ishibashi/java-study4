@@ -17,17 +17,6 @@ public enum InsertTergets {
         return no;
     }
     
-    // public static Operation getOperation(int no) {
-    //     Operation result = null;
-    //     Operation[] op = Operation.values();
-    //     for(Operation operation: op) {
-    //         if (operation.getNo() == no) {
-    //             result = operation;
-    //         }
-    //     }
-    //     return result;
-    // }
-    
     public static InsertTergets getInsertTergets(int no) {
         return Arrays.stream(InsertTergets.values())
         .filter(insertTergets -> insertTergets.getNo() == no)
