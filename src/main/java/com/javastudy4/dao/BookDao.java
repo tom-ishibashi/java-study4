@@ -1,26 +1,25 @@
 package com.javastudy4.dao;
 
-import com.javastudy4.model.Library;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;
 import com.javastudy4.model.Book;
 
 
-public class LibraryDao implements JdbcDao<Library>{
+public class BookDao implements JdbcDao<Book>{
     
     private Connection con;
     
     @Override
-    public List<Library> getResultList(String sql) throws SQLException{
-        getConnection();
+    public List<Book> getResultList(String sql) throws SQLException{
+    /*    getConnection();
         Statement stm = con.createStatement();
-        ResultSet rs = stm.executeQuery(sql);
-        return convertToList(rs);
+        ResultSet rs = stm.executeQuery(sql);*/
+        return null;
     }
     
     @Override
-    public Library getSingleResult(String sql) throws SQLException{
+    public Book getSingleResult(String sql) throws SQLException{
         getConnection();
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
@@ -34,28 +33,25 @@ public class LibraryDao implements JdbcDao<Library>{
         stm.executeUpdate(sql);
     }
     
-    private List<Library> convertToList(ResultSet rs) throws SQLException{
-        List<Library> result = new ArrayList<>();
+    private List<Book> convertToList(ResultSet rs) throws SQLException{
+        List<Book> result = new ArrayList<>();
         while(rs.next()){
-            List<Book> books = new ArrayList<>();
-            Library library = new Library();
             Book book = new Book();
-            library.setName(rs.getString("name"));
-            book.setGenre(rs.getString("genre"));
+            book.setId(rs.getInt("id"));
             book.setTitle(rs.getString("title"));
+            book.setGenre(rs.getString("genre"));
             book.setAuthor(rs.getString("author"));
+            book.setPrice(rs.getInt("price"));
             book.setPublisher(rs.getString("publisher"));
-            books.add(book);
-            library.setBooks(books);
-            result.add(library);
+            result.add(book);
         }
         return result;
     }
     
-    private Library convertToSingle(ResultSet rs) throws SQLException{
-        Library result = new Library();
+    private Book convertToSingle(ResultSet rs) throws SQLException{
+        Book result = new Book();
         while(rs.next()){
-            // TODO 各カラムについても実装
+            // TODO 各カラムの実装
             result.setId(rs.getInt("id"));
         }
         return result;
