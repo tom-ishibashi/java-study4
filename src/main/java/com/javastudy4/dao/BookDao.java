@@ -51,6 +51,7 @@ public class BookDao implements JdbcDao<Book>{
     private Book convertToSingle(ResultSet rs) throws SQLException{
         Book result = new Book();
         while(rs.next()){
+            // TODO 各カラムの実装
             result.setId(rs.getInt("id"));
         }
         return result;
