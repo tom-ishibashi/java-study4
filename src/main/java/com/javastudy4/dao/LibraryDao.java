@@ -55,6 +55,7 @@ public class LibraryDao implements JdbcDao<Library>{
     private Library convertToSingle(ResultSet rs) throws SQLException{
         Library result = new Library();
         while(rs.next()){
+            // TODO 各カラムについても実装
             result.setId(rs.getInt("id"));
         }
         return result;
