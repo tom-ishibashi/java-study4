@@ -31,7 +31,9 @@ public class BookDao implements JdbcDao<Book>{
         getConnection();
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
-        return convertToSingle(rs);
+        Book book = convertToSingle(rs);
+        closeConnection();
+        return book;
     }
     
     /**
@@ -42,6 +44,7 @@ public class BookDao implements JdbcDao<Book>{
         getConnection();
         Statement stm = con.createStatement();
         stm.executeUpdate(sql);
+        closeConnection();
     }
     
     private List<Book> convertToList(ResultSet rs) throws SQLException{
@@ -72,9 +75,17 @@ public class BookDao implements JdbcDao<Book>{
         try {
             // MySQLに接続
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javastudy4", "root", "");
-            System.out.println("MySQLに接続できました。");
         } catch (SQLException e) {
             System.out.println("MySQLに接続できませんでした。");
+        }
+    }
+
+    private void closeConnection() {
+        try {
+            // MySQL切断
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("MySQLを切断できませんでした。");
         }
     }
     

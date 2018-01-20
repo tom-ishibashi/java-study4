@@ -22,7 +22,9 @@ public class LibraryDao implements JdbcDao<Library>{
         getConnection();
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
-        return convertToList(rs);
+        List<Library> library = convertToList(rs);
+        closeConnection();
+        return library;
     }
     
     /**
@@ -33,7 +35,9 @@ public class LibraryDao implements JdbcDao<Library>{
         getConnection();
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
-        return convertToSingle(rs);
+        Library library = convertToSingle(rs);
+        closeConnection();
+        return library;
     }
     
     /**
@@ -44,6 +48,7 @@ public class LibraryDao implements JdbcDao<Library>{
         getConnection();
         Statement stm = con.createStatement();
         stm.executeUpdate(sql);
+        closeConnection();
     }
     
     private List<Library> convertToList(ResultSet rs) throws SQLException{
@@ -77,9 +82,17 @@ public class LibraryDao implements JdbcDao<Library>{
         try {
             // MySQLに接続
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javastudy4", "root", "");
-            System.out.println("MySQLに接続できました。");
         } catch (SQLException e) {
             System.out.println("MySQLに接続できませんでした。");
+        }
+    }
+
+    private void closeConnection() {
+        try {
+            // MySQL切断
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("MySQLを切断できませんでした。");
         }
     }
     
