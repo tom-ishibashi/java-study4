@@ -3,7 +3,13 @@ package com.javastudy4.service;
 public class SqlBuilder {
  
     /**
-     * 条件を元に図書館と本を検索するSQLを作成
+     * 条件を基に図書館と本を検索するSQLを作成
+     * @param libraryName 図書館名
+     * @parm bookGenre 本のジャンル
+     * @parm bookTitle 本の題名
+     * @parm bookAuthor 本の著者
+     * @parm bookpublisher 本の出版社
+     * @return String SQL
      */
     public String buildSelectByCondittion(String libraryName, String bookGenre, String bookTitle, String bookAuthor, String bookPublisher){
         StringBuilder sql = new StringBuilder();
@@ -43,6 +49,7 @@ public class SqlBuilder {
     
     /**
      * 図書館テーブルIDの最大値を取得するSQLを作成
+     * @return String SQL
      */
     public String buildSelectLibraryMaxId() {
         StringBuilder sql = new StringBuilder();
@@ -52,6 +59,9 @@ public class SqlBuilder {
     
     /**
      * 図書館テーブルにINSERTするSQLを作成
+     * @param id 図書館テーブルのid
+     * @param name 図書館名
+     * @return String SQL
      */
     public String buildInsertLibrary(int id, String name) {
         StringBuilder sql = new StringBuilder();
@@ -61,6 +71,7 @@ public class SqlBuilder {
  
     /**
      * 本テーブルIDの最大値を取得するSQLを作成
+     * @return String SQL
      */
     public String buildSelectBookMaxId() {
         StringBuilder sql = new StringBuilder();
@@ -70,6 +81,12 @@ public class SqlBuilder {
     
     /**
      * 本テーブルにINSERTするSQLを作成
+     * @parm id 本テーブルのid
+     * @parm title 題名
+     * @parm genre ジャンル
+     * @parm author 著者
+     * @parm publisher 出版社
+     * @return String SQL
      */
     public String buildInsertBook(int id,String title,String genre,int price,String author,String publisher) {
         StringBuilder sql = new StringBuilder();

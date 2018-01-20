@@ -6,8 +6,19 @@ import com.javastudy4.model.Book;
 import com.javastudy4.dao.*;
 import java.sql.*;
 
+/**
+ * 本のサービスクラス
+ */
 public class BookService{
     
+    /**
+     * 本の登録
+     * @parm title 題名
+     * @parm genre ジャンル
+     * @parm price 価格
+     * @parm author 著者
+     * @parm publisher 出版社
+     */
     public void insertBook(String title, String genre, int price, String author, String publisher)  throws SQLException{
         SqlBuilder sqlBuilder = new SqlBuilder();
         String selectMaxIdSql = sqlBuilder.buildSelectBookMaxId();

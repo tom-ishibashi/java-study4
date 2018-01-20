@@ -8,7 +8,9 @@ import java.util.Scanner;
 import com.javastudy4.service.*;
 import java.sql.*;
 
-
+/**
+ * 登録処理
+ */
 public class InsertOperation implements LibraryOperation {
     public void execute(){
         

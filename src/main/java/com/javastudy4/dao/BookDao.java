@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.sql.*;
 import com.javastudy4.model.Book;
 
-
+/**
+ * 本テーブルdaoクラス
+ */
 public class BookDao implements JdbcDao<Book>{
     
     private Connection con;
     
+    /**
+     * @see com.javastudy4.dao.JdbcDao#getResultList
+     */
     @Override
     public List<Book> getResultList(String sql) throws SQLException{
     /*    getConnection();
@@ -18,6 +23,9 @@ public class BookDao implements JdbcDao<Book>{
         return null;
     }
     
+    /**
+     * @see com.javastudy4.dao.JdbcDao#getSingleResult
+     */
     @Override
     public Book getSingleResult(String sql) throws SQLException{
         getConnection();
@@ -26,6 +34,9 @@ public class BookDao implements JdbcDao<Book>{
         return convertToSingle(rs);
     }
     
+    /**
+     * @see com.javastudy4.dao.JdbcDao#insert
+     */
     @Override
     public void insert(String sql) throws SQLException{
         getConnection();

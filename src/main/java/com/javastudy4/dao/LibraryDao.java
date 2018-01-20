@@ -7,10 +7,16 @@ import java.sql.*;
 import com.javastudy4.model.Book;
 
 
+/**
+ * 図書館テーブルdaoクラス
+ */
 public class LibraryDao implements JdbcDao<Library>{
     
     private Connection con;
     
+    /**
+     * @see com.javastudy4.dao.JdbcDao#getResultList
+     */
     @Override
     public List<Library> getResultList(String sql) throws SQLException{
         getConnection();
@@ -19,6 +25,9 @@ public class LibraryDao implements JdbcDao<Library>{
         return convertToList(rs);
     }
     
+    /**
+     * @see com.javastudy4.dao.JdbcDao#getSingleResult
+     */
     @Override
     public Library getSingleResult(String sql) throws SQLException{
         getConnection();
@@ -27,6 +36,9 @@ public class LibraryDao implements JdbcDao<Library>{
         return convertToSingle(rs);
     }
     
+    /**
+     * @see com.javastudy4.dao.JdbcDao#insert
+     */
     @Override
     public void insert(String sql) throws SQLException{
         getConnection();

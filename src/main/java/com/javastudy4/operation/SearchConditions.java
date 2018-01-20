@@ -2,6 +2,9 @@ package com.javastudy4.operation;
 
 import java.util.Arrays;
 
+/**
+ * 検索条件
+ */
 public enum SearchConditions {
     LIBRARY_NAME(1),
     BOOK_GENRE(2),
