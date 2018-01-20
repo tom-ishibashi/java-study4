@@ -11,7 +11,7 @@ public class LibraryService{
     public List<Library> selectByConndition(String libraryName, String bookGenre, String bookTitle, String bookAuthor, String bookPublisher) throws SQLException{
         SqlBuilder sqlBuilder = new SqlBuilder();
         String sql = sqlBuilder.buildSelectByCondittion(libraryName, bookGenre, bookTitle, bookAuthor, bookPublisher);
-        JdbcDao jdbcDao = new LibraryDao();
+        JdbcDao<Library> jdbcDao = new LibraryDao();
         return jdbcDao.getResultList(sql);
     }
     
