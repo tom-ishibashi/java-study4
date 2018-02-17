@@ -23,8 +23,10 @@ public class BookService{
         SqlBuilder sqlBuilder = new SqlBuilder();
         String selectMaxIdSql = sqlBuilder.buildSelectBookMaxId();
         JdbcDao<Book> jdbcDao = new BookDao();
+        jdbcDao.getConnection();
         int id = jdbcDao.getSingleResult(selectMaxIdSql).getId();
         String insertSql = sqlBuilder.buildInsertBook(id + 1, title, genre, price, author, publisher);
         jdbcDao.insert(insertSql);
+        jdbcDao.closeConnection();
     }
 }

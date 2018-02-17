@@ -10,20 +10,16 @@ import com.javastudy4.model.Book;
 /**
  * 図書館テーブルdaoクラス
  */
-public class LibraryDao implements JdbcDao<Library>{
-    
-    private Connection con;
+public class LibraryDao extends AbstractJdbcDao implements JdbcDao<Library>{
     
     /**
      * @see com.javastudy4.dao.JdbcDao#getResultList
      */
     @Override
     public List<Library> getResultList(String sql) throws SQLException{
-        getConnection();
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         List<Library> library = convertToList(rs);
-        closeConnection();
         return library;
     }
     
@@ -32,11 +28,9 @@ public class LibraryDao implements JdbcDao<Library>{
      */
     @Override
     public Library getSingleResult(String sql) throws SQLException{
-        getConnection();
         Statement stm = con.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         Library library = convertToSingle(rs);
-        closeConnection();
         return library;
     }
     
@@ -45,10 +39,8 @@ public class LibraryDao implements JdbcDao<Library>{
      */
     @Override
     public void insert(String sql) throws SQLException{
-        getConnection();
         Statement stm = con.createStatement();
         stm.executeUpdate(sql);
-        closeConnection();
     }
     
     private List<Library> convertToList(ResultSet rs) throws SQLException{
@@ -78,22 +70,12 @@ public class LibraryDao implements JdbcDao<Library>{
         return result;
     }
     
-    private void getConnection() {
-        try {
-            // MySQLに接続
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javastudy4", "root", "");
-        } catch (SQLException e) {
-            System.out.println("MySQLに接続できませんでした。");
-        }
+    public void getConnection() throws SQLException{
+        super.getConnection();
     }
 
-    private void closeConnection() {
-        try {
-            // MySQL切断
-            con.close();
-        } catch (SQLException e) {
-            System.out.println("MySQLを切断できませんでした。");
-        }
+    public void closeConnection() throws SQLException{
+        super.closeConnection();
     }
     
 }
