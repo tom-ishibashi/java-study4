@@ -23,7 +23,7 @@ public class LibraryService{
     public List<Library> selectByCondition(String libraryName, String bookGenre, String bookTitle, String bookAuthor, String bookPublisher) throws SQLException{
         SqlBuilder sqlBuilder = new SqlBuilder();
         String sql = sqlBuilder.buildSelectByCondittion(libraryName, bookGenre, bookTitle, bookAuthor, bookPublisher);
-        JdbcDao<Library> jdbcDao = new LibraryDao();
+        JdbcDao<Library> jdbcDao = new LibraryBookLinkDao();
         jdbcDao.getConnection();
         List<Library> results = jdbcDao.getResultList(sql);
         jdbcDao.closeConnection();
@@ -44,4 +44,17 @@ public class LibraryService{
         jdbcDao.insert(insertSql);
         jdbcDao.closeConnection();
     }
+    
+    /**
+     * 図書館テーブルの選択
+     */
+    public List<Library> selectLibrary() throws SQLException{
+        String sql = "select * from library;";
+        JdbcDao<Library> jdbcDao = new LibraryDao();
+        jdbcDao.getConnection();
+        List<Library> results = jdbcDao.getResultList(sql);
+        jdbcDao.closeConnection();
+        return results;
+    }
+
 }

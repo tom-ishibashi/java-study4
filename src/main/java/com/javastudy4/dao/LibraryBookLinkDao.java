@@ -10,7 +10,7 @@ import com.javastudy4.model.Book;
 /**
  * 図書館テーブルdaoクラス
  */
-public class LibraryDao extends AbstractJdbcDao implements JdbcDao<Library>{
+public class LibraryBookLinkDao extends AbstractJdbcDao implements JdbcDao<Library>{
     
     /**
      * @see com.javastudy4.dao.JdbcDao#getResultList
@@ -46,9 +46,16 @@ public class LibraryDao extends AbstractJdbcDao implements JdbcDao<Library>{
     private List<Library> convertToList(ResultSet rs) throws SQLException{
         List<Library> result = new ArrayList<>();
         while(rs.next()){
+            List<Book> books = new ArrayList<>();
             Library library = new Library();
-            library.setId(rs.getInt("id"));
+            Book book = new Book();
             library.setName(rs.getString("name"));
+            book.setGenre(rs.getString("genre"));
+            book.setTitle(rs.getString("title"));
+            book.setAuthor(rs.getString("author"));
+            book.setPublisher(rs.getString("publisher"));
+            books.add(book);
+            library.setBooks(books);
             result.add(library);
         }
         return result;
