@@ -15,10 +15,9 @@ public class BookDao extends AbstractJdbcDao implements JdbcDao<Book>{
      */
     @Override
     public List<Book> getResultList(String sql) throws SQLException{
-    /*    getConnection();
         Statement stm = con.createStatement();
-        ResultSet rs = stm.executeQuery(sql);*/
-        return null;
+        ResultSet rs = stm.executeQuery(sql);
+        return convertToList(rs);
     }
     
     /**

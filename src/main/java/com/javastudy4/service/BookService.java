@@ -29,4 +29,15 @@ public class BookService{
         jdbcDao.insert(insertSql);
         jdbcDao.closeConnection();
     }
+    /**
+     * 本の選択
+     */
+    public List<Book> selectBook()  throws SQLException{
+        String sql = "select * from book;";
+        JdbcDao<Book> jdbcDao = new BookDao();
+        jdbcDao.getConnection();
+        List<Book> results = jdbcDao.getResultList(sql);
+        jdbcDao.closeConnection();
+        return results;
+    }
 }
