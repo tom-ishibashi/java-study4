@@ -55,6 +55,13 @@ public class InsertOperation implements LibraryOperation {
                         bookService.insertBook(bookTitle,bookGenre,bookPrice,bookAuthor,bookPublisher);
                         break;
                     case LINK:
+                        System.out.println("図書館一覧");
+                        System.out.println("No:図書館");
+                        List<Library> libraries = libraryService.selectLibrary();
+                        for(Library library:libraries){
+                            System.out.println(library.getId() + ":" + library.getName());
+                        }
+
                         // System.out.print("本 タイトル:");
                         // bookTitle = sc.next();
                         break;
