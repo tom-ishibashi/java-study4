@@ -20,11 +20,14 @@ public class LibraryService{
      * @param bookPublisher 本の出版社
      * @return List<Library> 検索結果
      */
-    public List<Library> selectByConndition(String libraryName, String bookGenre, String bookTitle, String bookAuthor, String bookPublisher) throws SQLException{
+    public List<Library> selectByCondition(String libraryName, String bookGenre, String bookTitle, String bookAuthor, String bookPublisher) throws SQLException{
         SqlBuilder sqlBuilder = new SqlBuilder();
         String sql = sqlBuilder.buildSelectByCondittion(libraryName, bookGenre, bookTitle, bookAuthor, bookPublisher);
         JdbcDao<Library> jdbcDao = new LibraryDao();
-        return jdbcDao.getResultList(sql);
+        jdbcDao.getConnection();
+        List<Library> results = jdbcDao.getResultList(sql);
+        jdbcDao.closeConnection();
+        return results;
     }
     
     /**
@@ -35,8 +38,10 @@ public class LibraryService{
         SqlBuilder sqlBuilder = new SqlBuilder();
         String selectMaxIdSql = sqlBuilder.buildSelectLibraryMaxId();
         JdbcDao<Library> jdbcDao = new LibraryDao();
+        jdbcDao.getConnection();
         int id = jdbcDao.getSingleResult(selectMaxIdSql).getId();
         String insertSql = sqlBuilder.buildInsertLibrary(id + 1, name);
         jdbcDao.insert(insertSql);
+        jdbcDao.closeConnection();
     }
 }

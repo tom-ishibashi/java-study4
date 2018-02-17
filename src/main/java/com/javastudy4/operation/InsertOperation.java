@@ -61,7 +61,7 @@ public class InsertOperation implements LibraryOperation {
                     default:
                         break;
                 }
-    
+                System.out.println("登録が完了しました。");
             }
         
         } catch (SQLException e) {

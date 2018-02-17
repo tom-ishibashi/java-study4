@@ -65,7 +65,7 @@ public class SelectOperation implements LibraryOperation {
         List<Library> libraries;
         
         try{
-            libraries = libraryService.selectByConndition(libraryName, bookGenre, bookTitle, bookAuthor, bookPublisher);
+            libraries = libraryService.selectByCondition(libraryName, bookGenre, bookTitle, bookAuthor, bookPublisher);
         }catch(SQLException e){
             e.printStackTrace();
             return;

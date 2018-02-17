@@ -29,5 +29,13 @@ public interface JdbcDao<T> {
      */
     public void insert(String sql) throws SQLException;
 
+    /**
+     * DB接続処理
+     */
+    public void getConnection() throws SQLException;
    
+    /**
+     * DB切断処理
+     */
+    public void closeConnection() throws SQLException;
 }
