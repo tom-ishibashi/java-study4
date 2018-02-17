@@ -3,7 +3,7 @@ package com.javastudy4.dao;
 import java.sql.*;
 
 /**
- * abstruct class
+ * Dao super class
  */
 abstract class AbstractJdbcDao {
     protected Connection con;
