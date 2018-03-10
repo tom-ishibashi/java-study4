@@ -67,6 +67,11 @@ public class InsertOperation implements LibraryOperation {
                         for( Book book : books){
                             System.out.println(book.getId() + ":" + String.join("/", book.getGenre(), book.getTitle(), book.getAuthor(), book.getPublisher()));
                         } 
+                        System.out.println("どの図書館にどの本をひも付けますか？");
+                        System.out.println("図書館No:");
+                        int libraryId = sc.nextInt();
+                        System.out.println("本No:");
+                        int bookId = sc.nextInt();
 
 
 
