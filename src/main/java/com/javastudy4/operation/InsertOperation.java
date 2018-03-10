@@ -29,6 +29,7 @@ public class InsertOperation implements LibraryOperation {
                 InsertTergets insertTergets = InsertTergets.getInsertTergets(input);
                 
                 if(insertTergets == null){
+                    System.out.println("アプリケーションを終了します");
                     break;
                 }
                 
