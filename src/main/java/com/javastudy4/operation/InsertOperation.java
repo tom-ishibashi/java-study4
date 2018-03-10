@@ -12,11 +12,10 @@ import java.sql.*;
  * 登録処理
  */
 public class InsertOperation implements LibraryOperation {
+    private Scanner sc = new Scanner(System.in);
+    
     public void execute(){
-        
-        Scanner sc = new Scanner(System.in);
-
-        LibraryService libraryService = new LibraryService();
+        LibraryService libraryService = new LibraryService(); 
         BookService bookService = new BookService();
         LinkService linkService = new LinkService();
 
@@ -35,8 +34,7 @@ public class InsertOperation implements LibraryOperation {
                 
                 switch(insertTergets) {
                     case LIBRARY:
-                        System.out.print("図書館名:");
-                        libraryService.insertLibrary(sc.next());
+                        registerLibrary();
                         break;
                     case BOOK:
                         System.out.print("本 タイトル:");
@@ -94,5 +92,10 @@ public class InsertOperation implements LibraryOperation {
             return;
         }
         
+    }
+    private void registerLibrary() throws SQLException{
+        System.out.print("図書館名:");
+        LibraryService libraryService = new LibraryService();
+        libraryService.insertLibrary(sc.next());
     }
 }
