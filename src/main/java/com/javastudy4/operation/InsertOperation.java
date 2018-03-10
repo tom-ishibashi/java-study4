@@ -18,6 +18,7 @@ public class InsertOperation implements LibraryOperation {
 
         LibraryService libraryService = new LibraryService();
         BookService bookService = new BookService();
+        LinkService linkService = new LinkService();
 
         try {
     
@@ -73,6 +74,7 @@ public class InsertOperation implements LibraryOperation {
                         System.out.println("本No:");
                         int bookId = sc.nextInt();
 
+                        linkService.insertLink(libraryId,bookId);
 
 
 
