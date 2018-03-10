@@ -93,6 +93,18 @@ public class SqlBuilder {
         sql.append("insert into book (id, title, genre, price, author, publisher) values (" + id + ", '" + title + "', '" + genre + "', " + price + ", '" + author + "', '" + publisher + "');");
         return sql.toString();
     }
+    
+    /**
+     * ひも付きテーブルにINSERTするSQLを作成
+     * @param libraryId
+     * @param bookId
+     */
+    public String buildInsertLink(int libraryId, int bookId) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("insert into library_book_link (library_id, book_id) values (" + libraryId + ", " +  bookId + "  );");
+        return sql.toString();
+    }
+    
 
     
 }
