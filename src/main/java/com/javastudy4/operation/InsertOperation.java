@@ -13,12 +13,11 @@ import java.sql.*;
  */
 public class InsertOperation implements LibraryOperation {
     private Scanner sc = new Scanner(System.in);
+    private LibraryService libraryService = new LibraryService(); 
+    private BookService bookService = new BookService();
+    private LinkService linkService = new LinkService();
     
     public void execute(){
-        LibraryService libraryService = new LibraryService(); 
-        BookService bookService = new BookService();
-        LinkService linkService = new LinkService();
-
         try {
     
             while(true){  
@@ -37,49 +36,12 @@ public class InsertOperation implements LibraryOperation {
                         registerLibrary();
                         break;
                     case BOOK:
-                        System.out.print("本 タイトル:");
-                        String bookTitle = sc.next();
-                        
-                        System.out.print("本 ジャンル:");
-                        String bookGenre = sc.next();
-                        
-                        System.out.print("本 価格:");
-                        int bookPrice = sc.nextInt();
-                        
-                        System.out.print("本 著者:");
-                        String bookAuthor = sc.next();
-                        
-                        System.out.print("本 出版社:");
-                        String bookPublisher = sc.next();
-                        
-                        bookService.insertBook(bookTitle,bookGenre,bookPrice,bookAuthor,bookPublisher);
+                        registerBook();
                         break;
                     case LINK:
-                        System.out.println("図書館一覧");
-                        System.out.println("No:図書館");
-                        List<Library> libraries = libraryService.selectLibrary();
-                        for(Library library:libraries){
-                            System.out.println(library.getId() + ":" + library.getName());
-                        }
-                        System.out.println("本一覧");
-                        System.out.println("No:ジャンル/本タイトル/本著者/出版社");
-                        List<Book> books = bookService.selectBook();
-                        for( Book book : books){
-                            System.out.println(book.getId() + ":" + String.join("/", book.getGenre(), book.getTitle(), book.getAuthor(), book.getPublisher()));
-                        } 
-                        System.out.println("どの図書館にどの本をひも付けますか？");
-                        System.out.println("図書館No:");
-                        int libraryId = sc.nextInt();
-                        System.out.println("本No:");
-                        int bookId = sc.nextInt();
-
-                        linkService.insertLink(libraryId,bookId);
-
-
-
-
-                        // System.out.print("本 タイトル:");
-                        // bookTitle = sc.next();
+                        showLibraries();
+                        showBooks();
+                        registerLink();
                         break;
                     default:
                         break;
@@ -93,9 +55,51 @@ public class InsertOperation implements LibraryOperation {
         }
         
     }
+    
     private void registerLibrary() throws SQLException{
         System.out.print("図書館名:");
-        LibraryService libraryService = new LibraryService();
         libraryService.insertLibrary(sc.next());
+    }
+    
+    private void registerBook() throws SQLException{
+        System.out.print("本 タイトル:");
+        String bookTitle = sc.next();
+        System.out.print("本 ジャンル:");
+        String bookGenre = sc.next();
+        System.out.print("本 価格:");
+        int bookPrice = sc.nextInt();
+        System.out.print("本 著者:");
+        String bookAuthor = sc.next();
+        System.out.print("本 出版社:");
+        String bookPublisher = sc.next();
+                        
+       bookService.insertBook(bookTitle,bookGenre,bookPrice,bookAuthor,bookPublisher);
+    }
+    
+    private void showLibraries() throws SQLException{
+        System.out.println("図書館一覧");
+        System.out.println("No:図書館");
+        List<Library> libraries = libraryService.selectLibrary();
+        for(Library library:libraries){
+            System.out.println(library.getId() + ":" + library.getName());
+        }
+    }
+    
+    private void showBooks() throws SQLException{
+        System.out.println("本一覧");
+        System.out.println("No:ジャンル/本タイトル/本著者/出版社");
+        List<Book> books = bookService.selectBook();
+        for( Book book : books){
+            System.out.println(book.getId() + ":" + String.join("/", book.getGenre(), book.getTitle(), book.getAuthor(), book.getPublisher()));
+        } 
+    }
+
+    private void registerLink() throws SQLException{
+        System.out.println("どの図書館にどの本をひも付けますか？");
+        System.out.print("図書館No:");
+        int libraryId = sc.nextInt();
+        System.out.print("本No:");
+        int bookId = sc.nextInt();
+        linkService.insertLink(libraryId,bookId);
     }
 }
